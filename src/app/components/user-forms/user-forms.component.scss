@@ -1,0 +1,35 @@
+.card {
+  border-radius: 10px;
+}
+
+.btn-close {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  font-size: 0.7em;
+}
+
+.border {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-new-form-card {
+  border-style: dashed;
+  background: linear-gradient(135deg, #e9ecef, #f8f9fa);
+  min-height: 304px;
+}
+
+.add-new-form-btn {
+  width: 2em;
+  height: 2em;
+  border-style: dashed;
+  font-size: 2em;
+  color: var(--bs-primary);
+
+  &:hover {
+    color: white;
+  }
+}

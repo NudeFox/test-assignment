@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <div class="d-flex align-items-center mb-3">
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="invalidFormsCount > 0"
+      *ngIf="!isSubmitting(); else cancelSubmitBtn"
+      (click)="submitAllForms()"
+    >
+      Submit {{ forms.length > 1 ? "all forms" : "form" }}
+    </button>
+    <ng-template #cancelSubmitBtn>
+      <button type="button" class="btn btn-danger" (click)="cancelSubmit()">
+        Cancel
+      </button>
+    </ng-template>
+    <span *ngIf="isSubmitting()" class="ms-3">0:0{{ timer() }}</span>
+    <span *ngIf="invalidFormsCount > 0" class="ms-3 text-danger">
+      Invalid forms: {{ invalidFormsCount }}
+    </span>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+    <div class="col" *ngFor="let formGroup of forms; let index = index">
+      <div class="card h-100">
+        <div class="card-body">
+          <button
+            type="button"
+            class="btn-close float-end"
+            aria-label="Close"
+            (click)="removeForm(index)"
+            [disabled]="isSubmitting()"
+          ></button>
+          <app-form [form]="formGroup" />
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div
+        class="card h-100 add-new-form-card border-dark d-flex justify-content-center align-items-center"
+      >
+        <button
+          type="button"
+          class="btn btn-outline-primary rounded-circle add-new-form-btn"
+          (click)="addForm()"
+          [disabled]="forms.length === 10 || isSubmitting()"
+        >
+          <i class="bi bi-plus"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

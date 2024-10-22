@@ -1,0 +1,44 @@
+<form [formGroup]="form" [noValidate]="true" class="needs-validation">
+  <div class="mb-3">
+    <label for="country" class="form-label">Country</label>
+    <input
+      type="text"
+      class="form-control"
+      id="country"
+      formControlName="country"
+      placeholder="Enter country"
+      [ngbTypeahead]="searchCountry"
+      appInputValidation
+    />
+  </div>
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      formControlName="username"
+      placeholder="Enter username"
+      appInputValidation
+    />
+  </div>
+  <div class="mb-3">
+    <label for="birthday" class="form-label">Birthday</label>
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control datepicker"
+        id="birthday"
+        formControlName="birthday"
+        placeholder="dd.mm.yyyy"
+        ngbDatepicker
+        #d="ngbDatepicker"
+        [maxDate]="{ year: currentYear, month: currentMonth, day: currentDay }"
+        appInputValidation
+      />
+      <span class="input-group-text" (click)="d.toggle()"
+        ><i class="bi bi-calendar-date"></i
+      ></span>
+    </div>
+  </div>
+</form>
